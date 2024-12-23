@@ -1,0 +1,23 @@
+<div data-controller="task">
+  <!-- Form for adding tasks -->
+  <form action="/tasks" method="post" data-task-target="form" data-action="submit->task#create">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <input type="text" name="task[title]" placeholder="Task Title" class="border p-2 mb-2 w-full">
+    <textarea name="task[description]" placeholder="Task Description" class="border p-2 mb-2 w-full"></textarea>
+    <button type="submit" class="bg-blue-500 text-white px-4 py-2">Add Task</button>
+  </form>
+
+  <!-- Task List -->
+  <ul data-task-target="list">
+    <% @tasks.each do |task| %>
+      <li data-task-id="<%= task.id %>">                                            
+        <span><%= task.title %></span>
+        <button data-action="click->task#toggleComplete">Complete</button>
+        <button data-action="click->task#delete">Delete</button>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+
+

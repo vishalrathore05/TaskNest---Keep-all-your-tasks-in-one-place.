@@ -1,0 +1,8 @@
+<div data-controller="post">
+
+  <h1><%= @post.title %></h1>
+  <p><%= @post.content %></p>
+
+  <button data-action="click->post#like">Like</button>
+  <p>Likes: <span data-post-target="likeCount">0</span></p>
+</div>

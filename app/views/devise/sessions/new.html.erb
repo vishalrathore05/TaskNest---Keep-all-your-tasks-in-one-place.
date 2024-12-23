@@ -1,0 +1,26 @@
+  
+   <!-- Login Form on the Right (Centered Vertically) -->
+   <div class="container" style="max-width: 600px; width: 100%; padding: 40px; margin-right: 20px;">
+      <div class="card">
+         <div class="card-header text-center">
+            <div class="card-body">
+               <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { data: { controller: "form-validation", target: "form-validation.form", action: "submit->form-validation#handleSubmit" } }) do |f| %>
+                  <div class="field form-group mb-3" style="position: relative;">
+                    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: t('authentications.email'), data: { target: "form-validation.email" } %>
+                    <!-- Error message appears here -->
+                  </div>
+                  
+                  <div class="field form-group mb-3" style="position: relative;">
+                    <%= f.password_field :password, autocomplete: "current-password", class: "form-control", placeholder: t('authentications.password'), data: { target: "form-validation.password" } %>
+                    <!-- Error message appears here -->
+                  </div>
+                  <div class="form-group text-center">
+                     <%= f.submit t('authentications.login'), class: "btn btn-primary w-100", data: { target: "form-validation.submitButton" } %>
+                  </div>
+               <% end %>
+            </div>
+         </div>
+        </div>
+      </div>
+   </div>
+ 
